@@ -1,4 +1,5 @@
 package Dist::Zilla::Plugin::BeJROCKWAY;
+# ABSTRACT: Sets the author/license/copyright year to be me/Perl 5/now
 use Moose;
 use namespace::autoclean;
 

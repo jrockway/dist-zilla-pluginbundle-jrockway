@@ -38,7 +38,6 @@ sub configure {
     $self->add_plugins(qw(
        BeJROCKWAY
        AutoPrereqs
-       AutoVersion
        PkgVersion
        PodSyntaxTests
        PodWeaver
@@ -63,7 +62,17 @@ sub configure {
        'NextRelease' => {
            format => '%-9v%{EEE LLL d hh:mm:ss vvv YYYY}d',
        },
+   ], [
+       'Git::NextVersion' => {
+           first_version  => '0.01',
+           version_regexp => q{}.qr/^(\d+[.]\d+)$/,
+       },
    ]);
+
+    $self->add_bundle( '@Git' => {
+        tag_format  => '%v',
+        tag_message => '%v CPAN release',
+    });
 }
 
 __PACKAGE__->meta->make_immutable;
@@ -74,7 +83,4 @@ __END__
 
 =head1 DESCRIPTION
 
-This basically sets everything up the way I like.  Actually, I don't
-like RJBS-style versions, but they are convenient and I think it's
-cool to say "I released Foo colon colon Bar version
-1.2349857213094852734958273450928736459872346587234 today".
+This basically sets everything up the way I like.

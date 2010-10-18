@@ -1,2 +1,5 @@
 Change history for Dist-Zilla-PluginBundle-JROCKWAY
 {{$NEXT}}
+    - fix Git stuff
+
+1.102910 Mon Oct 18 09:42:13 CDT 2010
