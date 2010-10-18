@@ -33,9 +33,10 @@ use Dist::Zilla::Plugin::UploadToCPAN;
 use Dist::Zilla::PluginBundle::Git;
 
 sub configure {
-    my ($self) = @_;
+    my $self = shift;
 
     $self->add_plugins(qw(
+       BeJROCKWAY
        AutoPrereqs
        AutoVersion
        PkgVersion
@@ -58,13 +59,11 @@ sub configure {
        TestRelease
        ConfirmRelease
        UploadToCPAN
-   ));
-
-    $self->add_plugins([
-        'NextRelease' => {
-            format => '%-9v%{EEE LLL d hh:mm:ss vvv YYYY}d',
-        },
-    ]);
+   ), [
+       'NextRelease' => {
+           format => '%-9v%{EEE LLL d hh:mm:ss vvv YYYY}d',
+       },
+   ]);
 }
 
 __PACKAGE__->meta->make_immutable;
